@@ -14,7 +14,7 @@ function NavBar() {
         <header className="app-bar">
             <Toolbar>
                 <Typography>
-                    Bienvenido a la Página!
+                    VELASVIENDO
                 </Typography>
                 <div className="navBar">
                     <img src="logo.jpg" className="img-header" />
