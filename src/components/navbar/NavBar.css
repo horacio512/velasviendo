@@ -1,0 +1,25 @@
+.app-bar{
+    box-shadow: 0.1rem 0.5rem 0.75rem black;
+    background-color:black;
+}
+
+.img-header{
+    width: 8vw;
+}
+.navBar{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    background-color: black;
+}
+
+.navBar li {
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.navBar ul{
+    display: flex;
+    list-style: none;
+}
+
