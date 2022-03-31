@@ -21,7 +21,7 @@ export default function ItemShow({ data }) {
             <Grid key={data.id} mr="2rem" mb="2rem">
                 <Card>
                     <CardMedia component='img'
-                        image={require(`../images/${data.pictureUrl}.jpg`)} height="200" alt="Vela" />
+                        image={require(`../../public/images/${data.pictureUrl}.jpg`)} height="200" alt="Vela" />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {data.title}

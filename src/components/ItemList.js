@@ -3,8 +3,8 @@ import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 import Item from "./Item";
 
-const Items = () => {
 
+const Items = () => {
 
     const productsList = [
         {
@@ -74,14 +74,12 @@ const Items = () => {
 
     return (
 
-
         <Container>
             <Grid container alignItems="center">
                 {products.map((product) => {
                     const { id } = product
                     return (
-                        <Item data={product} key={id}></Item>)
-
+                        <Item data={product} key={id} ></Item>)
                 })}
             </Grid>
 

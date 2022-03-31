@@ -5,6 +5,7 @@ import CartWidget from './CartWidget';
 import { Box } from '@mui/system';
 import './NavBar.css'
 import '@fontsource/roboto/500.css';
+import {Link} from 'react-router-dom'
 
 
 function NavBar() {
@@ -18,11 +19,11 @@ function NavBar() {
                         VELASVIENDO
                     </Typography>
                     <div className="navBar">
-                        <img src="logo.jpg" className="img-header" />
+                        <img src="./images/logo.jpg" className="img-header" />
                         <ul>
 
-                            <li><Button variant="outlined" color="secondary" >Home</Button></li>
-                            <li><Button variant="outlined" color="secondary">Productos</Button></li>
+                            <li><Button variant="outlined" color="secondary" > <Link to="/">Home</Link></Button></li>
+                            <li><Button variant="outlined" color="secondary"><Link to="/products">Productos</Link></Button></li>
                             <li><Button variant="outlined" color="secondary">Nosotros</Button></li>
                             <li><Button variant="outlined" color="secondary">Nuestros Clientes</Button></li>
                             <li><Button variant="outlined" color="secondary">Contacto</Button></li>
