@@ -5,7 +5,7 @@ const CartWidget = ()=> {
 
     return(
         <div>
-       <ShoppingCartIcon fontSize='large' />
+       <ShoppingCartIcon fontSize='large'/>
         </div>
     )
 

@@ -18,7 +18,8 @@
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",
     "styled-components": "^5.3.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.71.0"
   },
   "scripts": {
     "start": "react-scripts start",

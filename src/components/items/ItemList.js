@@ -1,49 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
-import Item from "./Item";
-
+import Item from './Item';
+import productsList from "../../productsList";
+import { Typography } from "@mui/material";
+import '@fontsource/roboto/500.css';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
+import { Link } from "react-router-dom"; 
 
 const Items = () => {
-
-    const productsList = [
-        {
-            id: 1,
-            title: 'vela 1',
-            description: 'Nuestra primera vela',
-            price: 300,
-            pictureUrl: "candle1",
-        },
-        {
-            id: 2,
-            title: 'vela 2',
-            description: 'Nuestra segunda vela',
-            price: 350,
-            pictureUrl: "candle2",
-        },
-
-        {
-            id: 3,
-            title: 'vela 3',
-            description: 'Nuestra tercera vela',
-            price: 425,
-            pictureUrl: "candle3",
-        },
-        {
-            id: 4,
-            title: 'vela 4',
-            description: 'Nuestra cuarta vela',
-            price: 425,
-            pictureUrl: "candle4",
-        },
-        {
-            id: 5,
-            title: 'vela 5',
-            description: 'Nuestra quinta vela',
-            price: 425,
-            pictureUrl: "candle5",
-        }
-    ]
 
     const [products, listProducts] = useState([])
 
@@ -75,7 +41,12 @@ const Items = () => {
     return (
 
         <Container>
-            <Grid container alignItems="center">
+            <Typography variant="h1" mt="4rem" mb="3rem" textAlign="center" fontWeight={500}>Velas y Candelabros</Typography>
+            <Box mb="3rem" textAlign='center'>
+                <Button size="large" ><Link to={'/category/1'} className="linkHome">Velas</Link></Button>
+                <Button size="large" ><Link to={'/category/2'} className="linkHome">Candelabros</Link></Button>
+            </Box>
+            <Grid container alignItems="stretch" spacing={2}>
                 {products.map((product) => {
                     const { id } = product
                     return (

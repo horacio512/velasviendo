@@ -7,6 +7,7 @@
     width: 8vw;
 }
 .navBar{
+
     width: 100%;
     list-style: none;
     display: flex;
@@ -14,11 +15,23 @@
 }
 
 .navBar li {
+
     padding: 0.5rem;
     margin: 1rem;
 }
 
 .navBar ul{
+
     display: flex;
     list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    color: #9c27b0;
+}
+
+.linkHome{
+    text-align: center;
+    text-decoration: none;
 }
