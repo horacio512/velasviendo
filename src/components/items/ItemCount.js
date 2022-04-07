@@ -7,7 +7,7 @@ const ItemCount = (props) => {
 
 
     const [count, setCount] = useState(props.initial)
-    console.log(count)
+
 
     const addStock = () => {
 

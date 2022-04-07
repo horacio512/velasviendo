@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom'
 import { Container } from "@mui/material";
 
 
-
 function NavBar() {
+
 
     return (
         <header className="app-bar">
@@ -27,7 +27,7 @@ function NavBar() {
                         <li><Button variant="outlined" color="secondary"><Link to="/nosotros" className="link">Nosotros</Link></Button></li>
                         <li><Button variant="outlined" color="secondary"><Link to="/nuestrosclientes" className="link">Nuestros Clientes</Link></Button></li>
                         <li><Button variant="outlined" color="secondary"><Link to="/contacto" className="link">Contacto</Link></Button></li>
-                        <li><Button><CartWidget /></Button></li>
+                        <li><Button><Link to="/cart"><CartWidget /></Link></Button></li>
                     </ul>
                 </div>
                 </Container>
