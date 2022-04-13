@@ -3,22 +3,24 @@ import { Grid } from "@mui/material"
 import { Typography } from "@mui/material"
 import Button from '@mui/material/Button';
 import ItemCount from './ItemCount';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from 'react-router-dom'
+import CartContext from "../../context/CartContext";
 
 export default function ItemDetail({ data }) {
 
     const [value, setValue] = useState(0)
     const [buy, setBuy] = useState(false)
+    const { cartProducts, addProductToCart } = useContext(CartContext)
 
     const onAdd = (count) => {
 
         setValue(count)
         setBuy(true)
-        console.log(`Agregaste ${data.title} cantidad: ${count}`)
+        addProductToCart({...data, quantity: count})
 
     }
-
+ 
     return (
         <Grid key={data.id} container mr='1rem' ml='1rem' mb='4rem' mt='10rem'>
 
@@ -36,7 +38,7 @@ export default function ItemDetail({ data }) {
                 <Typography textAlign="center" variant="h3" mt="50%">
                     Precio ${data.price}
                 </Typography>
-                {buy ? <Button><Link to='/cart'>Terminar Compra</Link></Button> : <ItemCount stock={10} initial={1} onAdd={onAdd}/>}
+                {buy ? <Button><Link to='/cart'>Terminar Compra</Link></Button> : <ItemCount stock={10} initial={1} onAdd={onAdd} />}
             </Grid>
 
         </Grid>
