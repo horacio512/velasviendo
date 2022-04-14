@@ -5,12 +5,14 @@ import Item from '../components/items/Item'
 import productsList from "../productsList";
 import '@fontsource/roboto/500.css';
 import { useParams } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const Items = () => {
 
     const { categoryid } = useParams()
     const [products, listProducts] = useState([])
+    const [loading, setLoading] = useState(true)
     console.log(categoryid)
 
     const getProducts = () => {
@@ -28,8 +30,8 @@ const Items = () => {
         const getProductsAsync = async () => {
             try {
                 const data = await getProducts()
-                console.log(data)
                 listProducts(data)
+                setLoading(false)
             } catch (error) {
                 console.log(`Error: ${error}`)
             }
@@ -41,8 +43,7 @@ const Items = () => {
     return (
 
         <Container>
-
-            <Grid container alignItems="stretch" mt="4rem" spacing={2}>
+            {loading ? (<CircularProgress/>) : (<Grid container alignItems="stretch" mt="4rem" spacing={2}>
                 {products.map((product) => {
                     const { id } = product
                     if (product.type == categoryid) {
@@ -51,7 +52,8 @@ const Items = () => {
                     }
 
                 })}
-            </Grid>
+            </Grid>)}
+            
 
         </Container>
 
