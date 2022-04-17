@@ -2,57 +2,68 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 import Item from './Item';
-import productsList from "../../productsList";
 import { Typography } from "@mui/material";
 import '@fontsource/roboto/500.css';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../firebase";
+
 
 const Items = () => {
 
     const [products, listProducts] = useState([])
     const [loading, setLoading] = useState(true)
-    const getProducts = () => {
+    const { category } = useParams()
 
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(productsList);
-            }, 2000);
-        });
-
+    const getProducts = async () => {
+        const itemsCollection = collection(db, 'productos')
+        const productsSnapshot = await getDocs(itemsCollection)
+        const products = productsSnapshot.docs.map((doc) => {
+            let product = doc.data()
+            product.id = doc.id
+            return product
+        })
+        return products
     };
 
+
     useEffect(() => {
+        listProducts([])
+        setLoading(true)
+        getProducts().then((p) => {
+            setLoading(false)
+            category ? filterId(p, category) : listProducts(p)
+            console.log(products)
+        })
+    }, [category])
 
-        const getProductsAsync = async () => {
-            try {
-                const data = await getProducts()
-                listProducts(data)
-                setLoading(false)
-            } catch (error) {
-                console.log(`Error: ${error}`)
+    const filterId = (a, category) => {
+        return a.map((product, i) => {
+            console.log(product.type)
+            if (product.type == category) {
+            
+                return listProducts(products => [...products, product])
             }
-        }
-        getProductsAsync();
-    }, [])
-
+        })
+    }
 
     return (
 
         <Container>
-            <Typography variant="h1" mt="4rem" mb="3rem" textAlign="center" fontWeight={500}>Velas y Candelabros</Typography>
-            <Box mb="3rem" textAlign='center'>
-                <Button size="large" ><Link to={'/category/1'} className="linkHome">Velas</Link></Button>
-                <Button size="large" ><Link to={'/category/2'} className="linkHome">Candelabros</Link></Button>
+            <Box mb="3rem" mt="4rem" textAlign='center'>
+                <Button size="large" ><Link to={'/1'} className="linkHome">Velas</Link></Button>
+                <Button size="large" ><Link to={'/2'} className="linkHome">Candelabros</Link></Button>
+                <Button size="large" ><Link to={'/'} className="linkHome">Todos</Link></Button>
             </Box>
             <Grid container alignItems="stretch" spacing={2}>
-                {loading ? (<CircularProgress/>) : (products.map((product) => {
-                const { id } = product
-                return (
-                    <Item data={product} key={id} ></Item>)
-            }))}
+                {loading ? (<CircularProgress />) : (products.map((product) => {
+                    const { id } = product
+                    return (
+                        <Item data={product} key={id} ></Item>)
+                }))}
 
             </Grid>
 

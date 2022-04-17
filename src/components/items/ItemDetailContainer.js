@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import ItemDetail from './ItemDetail'
-import productsList from "../../productsList";
 import { useParams } from "react-router-dom";
 import { Container, Grid } from "@mui/material";
 
@@ -54,4 +53,4 @@ const ItemDetailContainer = () => {
     )
 }
 
-export default ItemDetailContainer
+export default ItemDetailContainer*/
