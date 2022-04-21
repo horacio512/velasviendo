@@ -63,7 +63,7 @@ export default function ItemDetail() {
                 <Typography textAlign="center" variant="h3" mt="50%">
                     Precio ${data.price}
                 </Typography>
-                {buy ? <Button><Link to='/cart'>Terminar Compra</Link></Button> : <ItemCount stock={10} initial={1} onAdd={onAdd} />}
+                {buy ? <Button><Link to='/cart'>Terminar Compra</Link></Button> : <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />}
             </Grid>
 
         </Grid>

@@ -36,13 +36,11 @@ const Items = () => {
         getProducts().then((p) => {
             setLoading(false)
             category ? filterId(p, category) : listProducts(p)
-            console.log(products)
         })
     }, [category])
 
     const filterId = (a, category) => {
         return a.map((product, i) => {
-            console.log(product.type)
             if (product.type == category) {
             
                 return listProducts(products => [...products, product])
