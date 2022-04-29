@@ -1,0 +1,47 @@
+.cart {
+    color: rgb(199, 196, 30);
+    font-size: 5rem;
+    text-decoration: none;
+}
+
+.emptyCart {
+    text-decoration: none;
+}
+
+.borderCard {
+    border-bottom: 0.15rem;
+    border-color: black;
+    border-bottom-style: groove;
+    margin-bottom: 2rem;
+}
+
+.img {
+    width: 25vh;
+    border: 10%;
+    border-radius: 1rem;
+    border-style: hidden;
+}
+
+.btns-cart {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(66, 11, 66);
+    align-items: center;
+    text-align: center;
+    word-spacing: 1rem;
+}
+
+.btn-checkout {
+    border-radius: 5%;
+    border-style: solid;
+    text-transform: uppercase;
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+
+}

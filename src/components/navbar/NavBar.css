@@ -1,13 +1,15 @@
 .app-bar{
     box-shadow: 0.1rem 0.5rem 0.75rem black;
     background-color:black;
+    position: sticky;
+    top: 0rem;
+    z-index: 2;
 }
 
 .img-header{
     width: 8vw;
 }
 .navBar{
-
     width: 100%;
     list-style: none;
     display: flex;
