@@ -8,8 +8,7 @@ const CartProvider = ({ children }) => {
 
 
 
-    const [cartProducts, setCartProducts] = useState([])
-    console.log(cartProducts)
+    const [cartProducts, setCartProducts] = useState(JSON.parse(localStorage.getItem("productos")) || [])
     const addProductToCart = (product) => {
 
         if (isInCart(product.id) == true) {
@@ -19,9 +18,11 @@ const CartProvider = ({ children }) => {
             add.quantity = product.quantity + quantity
             const newCart = [...cartProducts]
             setCartProducts(newCart)
+            localStorage.setItem("productos", JSON.stringify([...cartProducts, product]))
 
         } else {
             setCartProducts([...cartProducts, product])
+            localStorage.setItem("productos", JSON.stringify([...cartProducts, product]))
         }
     }
 
@@ -31,18 +32,21 @@ const CartProvider = ({ children }) => {
 
     function clear() {
         setCartProducts([])
+        localStorage.clear("productos")
     }
 
     const deleteOne = (id) => {
-        setCartProducts(cartProducts.filter(p => p.id !== id))
+        const newCart = cartProducts.filter(p => p.id !== id)
+        setCartProducts(newCart)
+        localStorage.setItem("productos", JSON.stringify(newCart))
     }
 
     const total = () => {
-        return  cartProducts.reduce((acum, product) => acum = acum + (product.price * product.quantity), 0 )
+        return cartProducts.reduce((acum, product) => acum = acum + (product.price * product.quantity), 0)
     }
 
-    const quantityTotal = ()=>{
-       return  cartProducts.reduce((acum, product) => acum += product.quantity, 0 )
+    const quantityTotal = () => {
+        return cartProducts.reduce((acum, product) => acum += product.quantity, 0)
     }
 
 

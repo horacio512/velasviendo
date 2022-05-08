@@ -2,7 +2,7 @@ import React from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CartContext from "../../context/CartContext"
 import { useContext } from "react"
-import './cart.css'
+import '../cart/cart.css'
 import { Grid,Typography} from '@mui/material';
 
 

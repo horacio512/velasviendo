@@ -1,0 +1,69 @@
+.img-fluid {
+    width: 100%;
+    height: auto;
+    border: 0.1rem;
+    border-style: hidden;
+    border-radius: 7%;
+}
+
+.img-border {
+    border: 0.1rem;
+    border-style: groove;
+    border-color: brown;
+    border-radius: 3%;
+}
+
+.btn-count {
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 0.4rem 2rem 0.4rem 2rem;
+    background-color: rgb(129, 26, 129);
+    border-style: hidden;
+    border-radius: 10%;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-count:hover {
+    background-color: rgb(156, 28, 156);
+}
+
+.btn-buy {
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 0.4rem 2rem 0.4rem 2rem;
+    background-color: transparent;
+    border-style: hidden;
+    border-radius: 3%;
+    cursor: pointer;
+    margin: 1rem;
+    font-weight: 600;
+}
+
+.btn-buy:hover{
+    background-color:rgb(176, 130, 219);
+}
+
+.link-Home {
+    text-decoration: none;
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    margin: 1rem;
+    font-size: 1.4rem;
+    color: rgb(110, 70, 146);
+
+}
+
+.link-Home:hover {
+    color: rgb(102, 9, 184);
+    text-decoration: underline;
+}
+
+.link-item {
+    text-decoration: none;
+    font-size: 1rem;
+    color: brown;
+}
+
+.link-item:hover {
+    font-style: italic;
+}

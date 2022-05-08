@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
-import Item from './Item';
-import { Typography } from "@mui/material";
+import Item from '../item/Item'
 import '@fontsource/roboto/500.css';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box'
 import { Link, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import { collection, getDocs } from "firebase/firestore";
@@ -42,7 +39,7 @@ const Items = () => {
     const filterId = (a, category) => {
         return a.map((product, i) => {
             if (product.type == category) {
-            
+
                 return listProducts(products => [...products, product])
             }
         })
@@ -51,12 +48,12 @@ const Items = () => {
     return (
 
         <Container>
-            <Box mb="3rem" mt="4rem" textAlign='center'>
-                <Button size="large" ><Link to={'/1'} className="linkHome">Velas</Link></Button>
-                <Button size="large" ><Link to={'/2'} className="linkHome">Candelabros</Link></Button>
-                <Button size="large" ><Link to={'/'} className="linkHome">Todos</Link></Button>
-            </Box>
-            <Grid container alignItems="stretch" spacing={2}>
+            <Grid container mb="3rem" mt="4rem" textAlign='center' justifyContent='center'>
+                <Link to={'/1'} className="link-Home">Velas</Link>
+                <Link to={'/2'} className="link-Home">Candelabros</Link>
+                <Link to={'/'} className="link-Home">Todos</Link>
+            </Grid>
+            <Grid container justifyContent='center' spacing={2}>
                 {loading ? (<CircularProgress />) : (products.map((product) => {
                     const { id } = product
                     return (

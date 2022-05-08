@@ -1,0 +1,22 @@
+.footer{
+    margin-top: 6rem;
+    background-color: black;
+}
+
+.footerLetter{
+    color: white;
+    text-align: end;
+}
+
+.footerName{
+    font-size: 1.3rem;
+    color:rgb(101, 21, 175);
+    margin: 0.8rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+
+}
+
+.footerHour{
+    color: white;
+}

@@ -33,23 +33,24 @@ const ItemCount = (props) => {
         <div>
             <Grid container textAlign="center" pt="5rem">
 
-                <Grid item md={4}>
-                    <Button variant="contained" fontSize='large' onClick={removeStock} >-</Button>
+                <Grid xs={4} item md={4}>
+                    <button onClick={removeStock} className='btn-count'>-</button>
                 </Grid>
 
-                <Grid item md={4} textAlign="center">
+                <Grid xs={4} item md={4} textAlign="center">
                     <Typography>
                         {count}
                     </Typography>
                 </Grid>
 
-                <Grid item md={4} >
-                    <Button onClick={addStock} variant="contained" fontSize='large' >+</Button>
+                <Grid xs={4} item md={4} >
+                    <button onClick={addStock} className='btn-count' >+</button>
                 </Grid>
 
-                <Grid item md={12} textAlign="center">
-                    <Button onClick={() => {if (count > 0 && props.stock > 0)
-                        props.onAdd(count)
+                <Grid item xs={12} sm={12} md={12} textAlign="center">
+                    <Button onClick={() => {
+                        if (count > 0 && props.stock > 0)
+                            props.onAdd(count)
                     }} >Agregar al Carrito</Button>
 
                 </Grid>

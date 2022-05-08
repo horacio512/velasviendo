@@ -1,17 +1,20 @@
-import './App.css';
 import NavBar from './components/navbar/NavBar';
-import ItemListContainer from './components/items/ItemListContainer';
-import ItemDetailContainer from './components/items/ItemDetailContainer'
+import ItemListContainer from './components/itemList/ItemListContainer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext';
 import Cart from './components/cart/Cart'
-import ItemDetail from './components/items/ItemDetail';
+import ItemDetail from './components/item/ItemDetail';
+import ContactPage from './pages/Contact';
+import About from './pages/About';
+import Footer from './components/footer/Footer';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 function App() {
 
   return (
     <div className="App">
+      <HelmetProvider>
       <CartProvider>
         <BrowserRouter>
           <NavBar />
@@ -20,13 +23,15 @@ function App() {
             <Route path="/:category" element={<ItemListContainer />} />
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/nosotros" />
+            <Route path="/nosotros" element={<About />} />
             <Route path="/nuestrosclientes" />
-            <Route path="/contacto" />
+            <Route path="/contacto" element={<ContactPage />} />
             <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
           </Routes>
         </BrowserRouter>
+        <Footer />
       </CartProvider>
+      </HelmetProvider>
     </div>
 
   );
