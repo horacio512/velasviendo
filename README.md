@@ -2,7 +2,7 @@
 
 #### Instalación:
 
-Para colonar el repositorio solo dirigete a donde quieras tener la página.
+Para clonar el repositorio solo dirigete a donde quieras tener la página.
 Luego Ejecuta el siguiente comando:
 `git clone` https://github.com/horacio512/velasviendo.git
 
