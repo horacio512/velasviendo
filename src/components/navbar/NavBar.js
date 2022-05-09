@@ -11,7 +11,6 @@ import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 
 
-
 function NavBar() {
 
     const [candle, candleFire] = useState(true)
@@ -19,21 +18,29 @@ function NavBar() {
     return (
         <AppBar position="sticky">
             <Toolbar className="app-bar" >
-                <Box onMouseEnter={() => { candleFire(false) }} onMouseLeave={() => { candleFire(true) }} >
+                <Box sx={{ display: { xs: 'none', sm: 'none', md: 'inline' } }} onMouseEnter={() => { candleFire(false) }} onMouseLeave={() => { candleFire(true) }} >
                     <Typography color="white" >
                         VELASVIENDO
                     </Typography>
 
-                    {candle ? (<img src="/logo.jpg" className="img-header" />) : (<img src="/logo2.jpg" className="img-header" />)}
+                    {candle ? (<img src="/logo.jpg" className="img-header" alt="logo" />) : (<img src="/logo2.jpg" className="img-header" alt='logo con fuego' />)}
                 </Box>
-                <Container>
-                    <Grid className="navBar" justifyContent='space-around'>
-                        <ul>
-                            <li><Button variant="outlined" color="secondary"><Link to="/" className="link" >Home</Link></Button></li>
-                            <li><Button variant="outlined" color="secondary"><Link to="/nosotros" className="link">Nosotros</Link></Button></li>
-                            <li><Button variant="outlined" color="secondary"><Link to="/contacto" className="link">Contacto</Link></Button></li>
-                            <li><Button><Link to="/cart"><CartWidget /></Link></Button></li>
-                        </ul>
+                <Container >
+                    <Grid container className="navBar" justifyItems='center' alignItems='center' sx={{ display: { xs: 'block', sm: 'flex' } }} >
+
+                        <Grid item xs={12} sm={3} textAlign='center' mb='1rem' mt='1rem'>
+                            <Button variant="outlined" color="secondary" size='large'><Link to="/" className="link" >Home</Link></Button>
+                        </Grid>
+                        <Grid item xs={12} sm={3} textAlign='center' mb='1rem' mt='1rem'>
+                            <Button variant="outlined" color="secondary" size='large'><Link to="/nosotros" className="link">Nosotros</Link></Button>
+                        </Grid>
+                        <Grid item xs={12} sm={3} textAlign='center' mb='1rem' mt='1rem' >
+                            <Button variant="outlined" color="secondary" size='large'><Link to="/contacto" className="link">Contacto</Link></Button>
+                        </Grid>
+                        <Grid item xs={12} sm={2} textAlign='end'>
+                            <Button><Link to="/cart"><CartWidget /></Link></Button>
+                        </Grid>
+
                     </Grid>
                 </Container>
             </Toolbar>

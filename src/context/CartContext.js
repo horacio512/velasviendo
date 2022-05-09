@@ -7,11 +7,12 @@ const CartContext = createContext([])
 const CartProvider = ({ children }) => {
 
 
-
+    //guardamos también el carrito en LocalStorage para no perder la información
     const [cartProducts, setCartProducts] = useState(JSON.parse(localStorage.getItem("productos")) || [])
     const addProductToCart = (product) => {
 
-        if (isInCart(product.id) == true) {
+        //chequeamos si el producto ya esta en el carrito de ser asi lo sumamos
+        if (isInCart(product.id) === true) {
             const add = cartProducts.find((p) => p.id === product.id)
             const { quantity } = add
 

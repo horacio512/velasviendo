@@ -17,8 +17,11 @@ export default function ItemDetail() {
     const [buy, setBuy] = useState(false)
     const { cartProducts, addProductToCart } = useContext(CartContext)
     const [product, setProduct] = useState({})
+
+    //carga de progreso de la página
     const [loading, setLoading] = useState(true)
 
+    //aqui se consigue la informacion de firebase sobre los productos
     const getProduct = async () => {
         const docRef = doc(db, 'productos', id)
         const docSnap = await getDoc(docRef)
@@ -39,6 +42,8 @@ export default function ItemDetail() {
         getProduct()
     }, [id])
 
+
+    //funcion que ademas añade la propiedad quantity (la cantidad de items)
     const onAdd = (count) => {
 
         setValue(count)
@@ -60,7 +65,7 @@ export default function ItemDetail() {
                         </Typography>
                     </Grid>
                     <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>
-                        <img src={`..${data.pictureUrl}`} width="60%%" className="img-border" />
+                        <img src={`..${data.pictureUrl}`} width="60%%" alt='catalogo' className="img-border" />
                     </Grid>
                     <Grid item xs={10} sm={5} md={5} lg={5}>
                         <Typography variant="h6" textAlign="center" mt="1rem">

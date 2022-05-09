@@ -15,6 +15,7 @@ const Items = () => {
     const [loading, setLoading] = useState(true)
     const { category } = useParams()
 
+    //aqui conseguimos los datos de firebase
     const getProducts = async () => {
         const itemsCollection = collection(db, 'productos')
         const productsSnapshot = await getDocs(itemsCollection)
@@ -26,7 +27,7 @@ const Items = () => {
         return products
     };
 
-
+    //utilizando useParams filtramos por categoria 1 para velas y 2 para candelabros
     useEffect(() => {
         listProducts([])
         setLoading(true)
@@ -36,6 +37,7 @@ const Items = () => {
         })
     }, [category])
 
+    //funcion que realiza el filtro
     const filterId = (a, category) => {
         return a.map((product, i) => {
             if (product.type == category) {

@@ -2,10 +2,10 @@ import { React, useState } from "react";
 import { Button, Card, CardContent, Container, Grid, TextField, Typography } from "@mui/material";
 import db from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 const ContactPage = () => {
-
+    //información del contacto
     const data = {
         name: '',
         lastName: '',
@@ -27,12 +27,12 @@ const ContactPage = () => {
         setFormData(data)
     }
 
+
+    //enviamos los datos del formulario a firebase
     const pushOrder = async (prevOrder) => {
         const orderFirebase = collection(db, 'contact')
-        const orderDoc = await addDoc(orderFirebase, prevOrder)
-
+        await addDoc(orderFirebase, prevOrder)
         setSuccess(true)
-
     }
 
     const [success, setSuccess] = useState(false)
@@ -41,7 +41,7 @@ const ContactPage = () => {
 
         <Container>
             <Helmet>
-            <title>Contacto</title>
+                <title>Contacto</title>
             </Helmet>
             <Card>
                 <CardContent>

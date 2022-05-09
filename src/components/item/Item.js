@@ -3,14 +3,10 @@ import { Grid } from "@mui/material";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
-import { CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
 import './item.css'
 
 export default function ItemShow({ data }) {
-
-
-    const { id, title, description, price, pictureUrl, type } = data;
 
 
     return (
@@ -25,7 +21,7 @@ export default function ItemShow({ data }) {
                     {data.description}
                 </Typography>
             </CardContent>
-            <Grid item md={12} p='1rem' textAlign='center' >
+            <Grid item md={12} p='1rem' textAlign='center'>
                 <Button size="small"><Link to={`/item/${data.id}`} className="link-item">Detalles</Link></Button>
             </Grid>
 

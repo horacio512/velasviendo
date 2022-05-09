@@ -9,8 +9,7 @@
 .navBar{
     width: 100%;
     list-style: none;
-    display: flex;
-    background-color: black;
+    background-color: black;   
 }
 
 .navBar li {
@@ -20,7 +19,6 @@
 }
 
 .navBar ul{
-    display: flex;
     list-style: none;
 }
 

@@ -1,5 +1,5 @@
 import { Container, Grid, Typography } from "@mui/material"
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet} from 'react-helmet-async';
 
 const About = () => {
     return (

@@ -1,6 +1,6 @@
 import '@fontsource/roboto/300.css';
 import ItemList from './ItemList'
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet} from 'react-helmet-async';
 
 function ItemListContainer() {
 

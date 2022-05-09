@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import CartContext from "../../context/CartContext"
-import { useContext } from "react"
 import { Link } from 'react-router-dom'
 import EndBuy from '../Modal/EndBuy'
 import { Button, Container } from "@mui/material"
@@ -11,18 +10,23 @@ import '@fontsource/roboto/400.css';
 import { Grid } from "@mui/material"
 import BackspaceSharpIcon from '@mui/icons-material/BackspaceSharp';
 import { Input } from "@mui/material"
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet} from 'react-helmet-async';
 
 const CartView = () => {
 
-    const { cartProducts, deleteOne, clear, total, quantityTotal } = useContext(CartContext)
+    const { cartProducts, deleteOne, clear, total } = useContext(CartContext)
+
+    //maneja el estado del Modal
     const [show, notShow] = useState(false)
     const totalPrice = total()
+
+    //datos del comprador
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
         email: '',
     })
+    //datos de los productos a comprar
     const [order, setOrder] = useState(
         {
             buyer: formData,
@@ -30,7 +34,8 @@ const CartView = () => {
                 return {
                     id: cartProduct.id,
                     title: cartProduct.title,
-                    price: cartProduct.price
+                    price: cartProduct.price,
+                    quantity: cartProduct.quantity
                 }
 
             }),
@@ -39,6 +44,7 @@ const CartView = () => {
         }
     )
 
+    //maneja los cambios del modal
     const handleChange = (e) => {
         const { value, name } = e.target
 
@@ -48,8 +54,9 @@ const CartView = () => {
         })
     }
 
+    //maneja el submit del modal
     const handleSubmit = (e) => {
-        if (formData.name.length == 0 || formData.email.length == 0 || formData.phone.length == 0) {
+        if (formData.name.length === 0 || formData.email.length === 0 || formData.phone.length === 0) {
             e.preventDefault()
         }
         else {
@@ -65,6 +72,7 @@ const CartView = () => {
         }
     }
 
+    //funcion que envia a firebase la orden del comprador
     const pushOrder = async (prevOrder) => {
 
         const orderFirebase = collection(db, 'orders')
@@ -72,6 +80,7 @@ const CartView = () => {
         setSuccess(orderDoc.id)
     }
 
+    //estado que valida si se pudo realizar la orden y guarda la info
     const [sOrder, setSuccess] = useState()
 
     return (
@@ -144,9 +153,9 @@ const CartView = () => {
                         </form>
                     </EndBuy>
                 )}
-                {(cartProducts.length === 0 && sOrder == undefined) && <Grid item sm={12} md={12} textAlign='center' >
+                {(cartProducts.length === 0 && sOrder === undefined) && <Grid item sm={12} md={12} textAlign='center' >
                     <Typography variant="h3" fontSize='1.5rem' mt='4rem' mb='2rem'>No hay items en tu carrito...</Typography>
-                    <img src="/emptyCart.jpg" width='100vw' />
+                    <img src="/emptyCart.jpg" width='100vw' alt=''/>
                     <Grid item md={12} mb="2rem" mt="2rem"> <Link to='/' className="emptyCart">
                         <Button>Continuar comprando</Button>
                     </Link></Grid>
@@ -159,7 +168,7 @@ const CartView = () => {
                         return (
                             <Grid container spacing={2} key={cartProduct.id} pb='1rem' className="borderCard">
                                 <Grid item textAlign="center" alignSelf="center" md={5} xs={12} sm={6}>
-                                    <img className="img" src={`..${cartProduct.pictureUrl}`} />
+                                    <img className="img" src={`..${cartProduct.pictureUrl}`} alt='' />
                                 </Grid>
                                 <Grid item md={7} sm={6}>
                                     <Typography variant='h6' mb='0.5rem' textAlign='start' fontSize='1.3rem'> {cartProduct.title}</Typography>

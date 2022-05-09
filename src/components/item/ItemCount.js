@@ -8,7 +8,7 @@ const ItemCount = (props) => {
 
     const [count, setCount] = useState(props.initial)
 
-
+    //funcion para añadir items
     const addStock = () => {
 
         if (props.stock > 0) {
@@ -19,6 +19,7 @@ const ItemCount = (props) => {
         }
     }
 
+    //funcion para remover items
     const removeStock = () => {
 
         if (props.stock > 0) {
